@@ -1,5 +1,0 @@
-com\zhao\controller\UserController.class
-com\zhao\model\User.class
-com\zhao\service\imp\UserServiceImp.class
-com\zhao\dao\UserDao.class
-com\zhao\service\UserService.class
