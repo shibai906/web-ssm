@@ -1,8 +1,3 @@
-
-drop table CON_BUILD_UNIT_MESS;
-drop table CON_BASIC_INFOR;
-drop table CON_ADD_TO_INFOR;
-drop table DATA_DICTIONARY ;
 -- 承建单位信息表
 create table CON_BUILD_UNIT_MESS(
 	id char(36) PRIMARY KEY ,		-- uuid
@@ -17,6 +12,7 @@ create table CON_BUILD_UNIT_MESS(
 	ENTER_CODE varchar(64) ,		-- 企业代码
 	ENTER_HONOR varchar(32) ,		-- 企业联系人
 	HONER_EMAIL varchar(128) ,		-- 联系人Email
+	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
 );
@@ -35,6 +31,7 @@ CREATE TABLE CON_BASIC_INFOR(
 	CON_AMOUT Decimal(10,2)	,		-- 合同金额
 	SEL_BUDGET varchar(63) ,		-- 选择概算
 	CON_ACCESS varchar(255) ,		-- 合同附件
+	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
 );
@@ -46,6 +43,7 @@ CREATE TABLE CON_ADD_TO_INFOR(
 	CON_SERIAL_NUM varchar(32) ,		-- 合同编号
 	ADD_TO_MONEY Decimal(10,2) ,		-- 追加金额
 	CON_ACCESS varchar(255)	,		-- 追加附件目录
+	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
 );
@@ -59,6 +57,7 @@ CREATE TABLE DATA_DICTIONARY(
 	field char(2) ,				-- 字典名称对应字段
 	descri varchar(255) ,			-- 描述
 	type_name varchar(64), 			-- 那一类字段
+	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
 );

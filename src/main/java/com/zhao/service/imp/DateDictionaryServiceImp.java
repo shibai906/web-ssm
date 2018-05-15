@@ -35,8 +35,8 @@ public class DateDictionaryServiceImp implements DateDictionaryService {
     }
 
     @Override
-    public void delUpdate(int delSign) {
-        dateDictionaryDao.delUpdate(delSign);
+    public void delUpdate(String id) {
+        dateDictionaryDao.delUpdate(id);
     }
 
     @Override

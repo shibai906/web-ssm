@@ -15,25 +15,27 @@
     </resultMap>
 
     <insert id="insert">
+        insert into DATA_DICTIONARY(id,name,field,descri,type_name,CREATE_TIME,UPDATE_TIME,del_sign)
+        values (#{id},#{name},#{field},#{descri},#{typeName},#{createTime},#{updateTime},0)
     </insert>
-    <select id="query" >
-
+    <select id="query" parameterType="string" resultMap="dateDictionary">
+        select * from DATA_DICTIONARY where id=#{value} and del_sign=0
     </select>
 
     <select id="querySearch" >
 
     </select>
 
-    <select id="queryAll" >
-
+    <select id="queryAll" resultMap="dateDictionary" >
+        select * from DATA_DICTIONARY where del_sign=0
     </select>
 
     <update id="update" >
 
     </update>
 
-    <update id="delUpdate" >
-
+    <update id="delUpdate" parameterType="string" >
+        update DATA_DICTIONARY set del_sign=1 where id=#{value}
     </update>
 
 </mapper>

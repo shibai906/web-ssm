@@ -37,8 +37,8 @@ public class ConAddToInforServiceImp implements ConAddToInforService {
     }
 
     @Override
-    public void delUpdate(int delSign) {
-        conAddToInforDao.delUpdate(delSign);
+    public void delUpdate(String id) {
+        conAddToInforDao.delUpdate(id);
     }
 
     @Override

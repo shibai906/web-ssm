@@ -22,25 +22,27 @@
     </resultMap>
 
     <insert id="insert">
+        insert into CON_BUILD_UNIT_MESS(id,CON_BUILD_UNIT,BUSI_LICENSE_NUM,ENTER_LEGAL,LINKMAN_IPHONE,ENTER_ADDRESS,REMARK,ENTER_TYPE,ENTER_APTITUDE,ENTER_CODE,ENTER_HONOR,HONER_EMAIL,CREATE_TIME,UPDATE_TIME,del_sign)
+        values (#{id},#{conBuildUnit},#{busiLicenseNum},#{enterLegal},#{linkmanIphone},#{enterAddress},#{remark},#{enterType},#{enterAptitude},#{enterCode},#{enterHonor},#{honerEmail},#{createTime},#{updateTime},0)
     </insert>
-    <select id="query" >
-
+    <select id="query" parameterType="string" resultMap="conBuildUnitMess" >
+        select * from CON_BUILD_UNIT_MESS where id=#{value} and del_sign=0
     </select>
 
     <select id="querySearch" >
 
     </select>
 
-    <select id="queryAll" >
-
+    <select id="queryAll" resultMap="conBuildUnitMess" >
+        select * from CON_BUILD_UNIT_MESS where del_sign=0;
     </select>
 
     <update id="update" >
 
     </update>
 
-    <update id="delUpdate" >
-
+    <update id="delUpdate" parameterType="string" >
+        update CON_BUILD_UNIT_MESS set del_sign=1 where id=#{value}
     </update>
 
 </mapper>

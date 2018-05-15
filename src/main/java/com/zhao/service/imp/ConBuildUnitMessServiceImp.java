@@ -35,8 +35,8 @@ public class ConBuildUnitMessServiceImp implements ConBuildUnitMessService {
     }
 
     @Override
-    public void delUpdate(int delSign) {
-        conBuildUnitMessDao.delUpdate(delSign);
+    public void delUpdate(String id) {
+        conBuildUnitMessDao.delUpdate(id);
     }
 
     @Override

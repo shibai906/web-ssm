@@ -35,8 +35,8 @@ public class ConBasicInforServiceImp implements ConBasicInforService {
     }
 
     @Override
-    public void delUpdate(int delSign) {
-        conBasicInforDao.delUpdate(delSign);
+    public void delUpdate(String id) {
+        conBasicInforDao.delUpdate(id);
     }
 
     @Override

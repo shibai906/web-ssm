@@ -20,26 +20,31 @@
         <result column="UPDATE_TIME" property="updateTime"/>
     </resultMap>
 
-    <insert id="insert">
+    <insert id="insert" parameterType="ConBasicInfor">
+        insert into CON_BASIC_INFOR(id,CON_SERIAL_NUM,CON_NAME,CON_TYPE,CON_DATE
+        ,PROJECT_LINKMAN,REMARK,CON_BUILD_UNIT,CON_AMOUT,SEL_BUDGET,CON_ACCESS,
+        CREATE_TIME,UPDATE_TIME,del_sign)
+        values (#{id},#{conSerialNum},#{conName},#{conType},#{conDate},#{projectLinkman},#{remark},#{conBuildUnit},
+        #{conAmout},#{selBudget},#{conAccess},#{createTime},#{updateTime},0)
     </insert>
-    <select id="query" >
-
+    <select id="query" resultMap="conBasicInfor" parameterType="string">
+        select * from CON_BASIC_INFOR where id=#{value} and del_sign=0
     </select>
 
     <select id="querySearch" >
 
     </select>
 
-    <select id="queryAll" >
-
+    <select id="queryAll" resultMap="conBasicInfor">
+        select * from CON_BASIC_INFOR where del_sign=0;
     </select>
 
     <update id="update" >
 
     </update>
 
-    <update id="delUpdate" >
-
+    <update id="delUpdate" parameterType="int">
+        update CON_BASIC_INFOR set del_sign=1 where id=#{value}
     </update>
 
 </mapper>

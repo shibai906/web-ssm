@@ -7,6 +7,6 @@ public interface CommonDao<T> {
     T query(String id) ;
     List<T> querySearch(T t) ;
     void update(T t);
-    void delUpdate(int delSign) ;
+    void delUpdate(String id) ;
     List<T> queryAll() ;
 }
