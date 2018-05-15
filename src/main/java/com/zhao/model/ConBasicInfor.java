@@ -2,9 +2,8 @@ package com.zhao.model;
 
 import java.math.BigDecimal;
 
-public class ConBasicInfor {
+public class ConBasicInfor extends CommonFeild {
 
-    public String id ;                  // uuid
     public String conSerialNum ;        // 合同编号
     public String conName ;             // 合同名称
     public String conType ;             // 合同类型
@@ -15,16 +14,6 @@ public class ConBasicInfor {
     public BigDecimal conAmout ;        // 合同金额
     public String selBudget ;           // 选择概算
     public String conAccess ;           // 合同附件
-    public long createTime ;            // 创建日期
-    public long updateTime ;            // 更新日期
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getConSerialNum() {
         return conSerialNum;
@@ -106,26 +95,10 @@ public class ConBasicInfor {
         this.conAccess = conAccess;
     }
 
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
-    }
-
-    public long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
         return "ConBasicInfor{" +
-                "id='" + id + '\'' +
                 ", conSerialNum='" + conSerialNum + '\'' +
                 ", conName='" + conName + '\'' +
                 ", conType='" + conType + '\'' +
@@ -136,8 +109,6 @@ public class ConBasicInfor {
                 ", conAmout=" + conAmout +
                 ", selBudget='" + selBudget + '\'' +
                 ", conAccess='" + conAccess + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
                 '}';
     }
 }

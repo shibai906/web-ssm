@@ -3,23 +3,13 @@ package com.zhao.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ConAddToInfor {
+public class ConAddToInfor extends CommonFeild {
 
-    public String id ;                  // uuid
     public String conBasicInfor ;       // 合同信息
     public String conSerialNum ;        // 合同编号
     public BigDecimal addToMoney ;      // 追加金额
     public String conAccess ;           // 追加附件目录
-    public long createTime ;            // 创建日期
-    public long updateTime ;            // 更新日期
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getConBasicInfor() {
         return conBasicInfor;
@@ -53,32 +43,14 @@ public class ConAddToInfor {
         this.conAccess = conAccess;
     }
 
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
-    }
-
-    public long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
         return "ConAddToInfor{" +
-                "id='" + id + '\'' +
                 ", conBasicInfor='" + conBasicInfor + '\'' +
                 ", conSerialNum='" + conSerialNum + '\'' +
                 ", addToMoney=" + addToMoney +
                 ", conAccess='" + conAccess + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
                 '}';
     }
 }

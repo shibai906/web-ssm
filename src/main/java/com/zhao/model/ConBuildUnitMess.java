@@ -2,30 +2,20 @@ package com.zhao.model;
 
 import java.util.Date;
 
-public class ConBuildUnitMess {
+public class ConBuildUnitMess extends CommonFeild {
 
-    public String id ;              // uuid
     public String conBuildUnit ;    // 承建单位
     public String busiLicenseNum ;  // 营业执照编号
-    public String EnterLegal ;      // 企业法人
+    public String enterLegal ;      // 企业法人
     public String linkmanIphone ;   // 联系人电话
     public String enterAddress ;    // 企业地址
-    public String text ;            // 备注
+    public String remark ;            // 备注
     public String enterType ;       // 企业性质
     public String enterAptitude ;   // 企业资质
     public String enterCode ;       // 企业代码
     public String enterHonor ;      // 企业联系人
     public String honerEmail ;      // 联系人Email
-    public long createTime ;        // 创建时间
-    public long updateTime ;        // 更新时间
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getConBuildUnit() {
         return conBuildUnit;
@@ -44,11 +34,11 @@ public class ConBuildUnitMess {
     }
 
     public String getEnterLegal() {
-        return EnterLegal;
+        return enterLegal;
     }
 
     public void setEnterLegal(String enterLegal) {
-        EnterLegal = enterLegal;
+        enterLegal = enterLegal;
     }
 
     public String getLinkmanIphone() {
@@ -67,13 +57,6 @@ public class ConBuildUnitMess {
         this.enterAddress = enterAddress;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 
     public String getEnterType() {
         return enterType;
@@ -115,39 +98,29 @@ public class ConBuildUnitMess {
         this.honerEmail = honerEmail;
     }
 
-    public long getCreateTime() {
-        return createTime;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
         return "ConAddToInfor{" +
-                "id='" + id + '\'' +
                 ", conBuildUnit='" + conBuildUnit + '\'' +
                 ", busiLicenseNum='" + busiLicenseNum + '\'' +
-                ", EnterLegal='" + EnterLegal + '\'' +
+                ", EnterLegal='" + enterLegal + '\'' +
                 ", linkmanIphone='" + linkmanIphone + '\'' +
                 ", enterAddress='" + enterAddress + '\'' +
-                ", text='" + text + '\'' +
+                ", remark='" + remark + '\'' +
                 ", enterType='" + enterType + '\'' +
                 ", enterAptitude='" + enterAptitude + '\'' +
                 ", enterCode='" + enterCode + '\'' +
                 ", enterHonor='" + enterHonor + '\'' +
                 ", honerEmail='" + honerEmail + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
                 '}';
     }
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.zhao.dao.ConAddToInforDao">
+
+    <resultMap id="ConAddToInfor" type="conAddToInforDao" >
+        <id column="id" property="id"/>
+        <result column="CON_BASIC_INFOR" property="conBasicInfor"/>
+        <result column="CON_SERIAL_NUM" property="conSerialNum"/>
+        <result column="ADD_TO_MONEY" property="addToMoney"/>
+        <result column="CON_ACCESS" property="conAccess"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="ConAddToInfor">
+      insert into CON_ADD_TO_INFOR(id,CON_BASIC_INFOR,CON_SERIAL_NUM,ADD_TO_MONEY,CON_ACCESS,CREATE_TIME,UPDATE_TIME)
+        values(#{id},#{conBasicInfor},#{conSerialNum},#{addToMoney},#{conAccess},#{createTime},#{updateTime});
+    </insert>
+    <select id="query" >
+
+    </select>
+
+    <select id="querySearch" >
+
+    </select>
+
+    <select id="queryAll" >
+
+    </select>
+
+    <update id="update" >
+
+    </update>
+
+    <update id="delUpdate" >
+
+    </update>
+
+</mapper>

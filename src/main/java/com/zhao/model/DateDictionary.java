@@ -1,22 +1,10 @@
 package com.zhao.model;
 
-public class DateDictionary {
-
-    public String id ;
+public class DateDictionary extends CommonFeild {
     public String name ;
     public String field ;
     public String descri ;
     public String typeName ;
-    public long createTime ;
-    public long updateTime ;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -50,32 +38,14 @@ public class DateDictionary {
         this.typeName = typeName;
     }
 
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
-    }
-
-    public long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
-    }
 
     @Override
     public String toString() {
         return "DateDictionary{" +
-                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", field='" + field + '\'' +
                 ", descri='" + descri + '\'' +
                 ", typeName='" + typeName + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
                 '}';
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.zhao.dao.DateDictionaryDao">
+
+    <resultMap id="DateDictionary" type="dateDictionary" >
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="field" property="field"/>
+        <result column="descri" property="descri"/>
+        <result column="type_name" property="typeName"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert">
+    </insert>
+    <select id="query" >
+
+    </select>
+
+    <select id="querySearch" >
+
+    </select>
+
+    <select id="queryAll" >
+
+    </select>
+
+    <update id="update" >
+
+    </update>
+
+    <update id="delUpdate" >
+
+    </update>
+
+</mapper>

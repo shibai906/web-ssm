@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.zhao.dao.ConBuildUnitMessDao">
+
+    <resultMap id="ConBuildUnitMess" type="conBuildUnitMess" >
+        <id column="id" property="id"/>
+        <result column="CON_BUILD_UNIT" property="conBuildUnit"/>
+        <result column="BUSI_LICENSE_NUM" property="busiLicenseNum"/>
+        <result column="ENTER_LEGAL" property="enterLegal"/>
+        <result column="LINKMAN_IPHONE" property="linkmanIphone"/>
+        <result column="ENTER_ADDRESS" property="enterAddress"/>
+        <result column="REMARK" property="remark"/>
+        <result column="ENTER_TYPE" property="enterType"/>
+        <result column="ENTER_APTITUDE" property="enterAptitude"/>
+        <result column="ENTER_CODE" property="enterCode"/>
+        <result column="ENTER_HONOR" property="enterHonor"/>
+        <result column="HONER_EMAIL" property="honerEmail"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert">
+    </insert>
+    <select id="query" >
+
+    </select>
+
+    <select id="querySearch" >
+
+    </select>
+
+    <select id="queryAll" >
+
+    </select>
+
+    <update id="update" >
+
+    </update>
+
+    <update id="delUpdate" >
+
+    </update>
+
+</mapper>
