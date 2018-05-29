@@ -18,7 +18,7 @@ create table CON_BUILD_UNIT_MESS(
 );
 
 
--- 合同基本信息添加
+-- 合同基本信息表
 CREATE TABLE CON_BASIC_INFOR(
 	id char(36) PRIMARY KEY ,		-- uuid
 	CON_SERIAL_NUM varchar(32) ,		-- 合同编号
