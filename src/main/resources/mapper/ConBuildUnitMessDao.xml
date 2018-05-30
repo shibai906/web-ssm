@@ -12,6 +12,7 @@
         <result column="LINKMAN_IPHONE" property="linkmanIphone"/>
         <result column="ENTER_ADDRESS" property="enterAddress"/>
         <result column="REMARK" property="remark"/>
+        <result column="SUPER_SATR" property="superSatr"/>
         <result column="ENTER_TYPE" property="enterType"/>
         <result column="ENTER_APTITUDE" property="enterAptitude"/>
         <result column="ENTER_CODE" property="enterCode"/>
@@ -22,8 +23,8 @@
     </resultMap>
 
     <insert id="insert" parameterType="ConBuildUnitMess">
-        insert into CON_BUILD_UNIT_MESS(id,CON_BUILD_UNIT,BUSI_LICENSE_NUM,ENTER_LEGAL,LINKMAN_IPHONE,ENTER_ADDRESS,REMARK,ENTER_TYPE,ENTER_APTITUDE,ENTER_CODE,ENTER_HONOR,HONER_EMAIL,CREATE_TIME,UPDATE_TIME,del_sign)
-        values (#{id},#{conBuildUnit,jdbcType=VARCHAR},#{busiLicenseNum,jdbcType=VARCHAR},#{enterLegal,jdbcType=VARCHAR},#{linkmanIphone,jdbcType=VARCHAR},#{enterAddress,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{enterType,jdbcType=VARCHAR},#{enterAptitude,jdbcType=VARCHAR},#{enterCode,jdbcType=VARCHAR},#{enterHonor,jdbcType=VARCHAR},#{honerEmail,jdbcType=VARCHAR},#{createTime},#{updateTime},0)
+        insert into CON_BUILD_UNIT_MESS(id,CON_BUILD_UNIT,BUSI_LICENSE_NUM,ENTER_LEGAL,LINKMAN_IPHONE,ENTER_ADDRESS,REMARK,ENTER_TYPE,ENTER_APTITUDE,ENTER_CODE,ENTER_HONOR,HONER_EMAIL,SUPER_SATR,CREATE_TIME,UPDATE_TIME,del_sign)
+        values (#{id},#{conBuildUnit,jdbcType=VARCHAR},#{busiLicenseNum,jdbcType=VARCHAR},#{enterLegal,jdbcType=VARCHAR},#{linkmanIphone,jdbcType=VARCHAR},#{enterAddress,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{enterType,jdbcType=VARCHAR},#{enterAptitude,jdbcType=VARCHAR},#{enterCode,jdbcType=VARCHAR},#{enterHonor,jdbcType=VARCHAR},#{honerEmail,jdbcType=VARCHAR},#{superSatr,jdbcType=VARCHAR},#{createTime},#{updateTime},0)
     </insert>
     <select id="query" parameterType="string" resultMap="conBuildUnitMess" >
         select * from CON_BUILD_UNIT_MESS where id=#{value} and del_sign=0
@@ -44,6 +45,7 @@
         <if test="enterLegal != null">ENTER_LEGAL = #{enterLegal} ,</if>
         <if test="linkmanIphone != null">LINKMAN_IPHONE = #{linkmanIphone} ,</if>
         <if test="enterAddress != null">ENTER_ADDRESS = #{enterAddress} ,</if>
+        <if test="superSatr != null">SUPER_SATR = #{superSatr} ,</if>
         <if test="remark != null">REMARK = #{remark} ,</if>
         <if test="enterType != null">ENTER_TYPE = #{enterType} ,</if>
         <if test="enterAptitude != null">ENTER_APTITUDE = #{enterAptitude} ,</if>

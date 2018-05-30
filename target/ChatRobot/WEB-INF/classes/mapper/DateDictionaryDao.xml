@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.gradu.pro.dao.DateDictionaryDao">
+
+    <resultMap id="dateDictionary" type="DateDictionary" >
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="field" property="field"/>
+        <result column="descri" property="descri"/>
+        <result column="type_name" property="typeName"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="DateDictionary">
+        insert into DATA_DICTIONARY(id,name,field,descri,type_name,CREATE_TIME,UPDATE_TIME,del_sign)
+        values (#{id},#{name,jdbcType=VARCHAR},#{field,jdbcType=VARCHAR},#{descri,jdbcType=VARCHAR},#{typeName,jdbcType=VARCHAR},#{createTime},#{updateTime},0)
+    </insert>
+    <select id="query" parameterType="string" resultMap="dateDictionary">
+        select * from DATA_DICTIONARY where id=#{value} and del_sign=0
+    </select>
+
+    <select id="querySearch" parameterType="DateDictionary" resultMap="dateDictionary">
+
+    </select>
+
+    <select id="queryAll" resultMap="dateDictionary" >
+        select * from DATA_DICTIONARY where del_sign=0
+    </select>
+
+    <update id="update" parameterType="DateDictionary">
+        update DATA_DICTIONARY set
+        <if test="name != null">name = #{name} ,</if>
+        <if test="field != null">field = #{field} ,</if>
+        <if test="descri != null">descri = #{descri} ,</if>
+        <if test="type_name != null">type_name = #{typeName} ,</if>
+        UPDATE_TIME = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <update id="delUpdate" parameterType="string" >
+        update DATA_DICTIONARY set del_sign=1 where id=#{value}
+    </update>
+
+</mapper>

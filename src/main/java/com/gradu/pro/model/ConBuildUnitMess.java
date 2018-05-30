@@ -15,7 +15,15 @@ public class ConBuildUnitMess extends CommonFeild {
     public String enterCode ;       // 企业代码
     public String enterHonor ;      // 企业联系人
     public String honerEmail ;      // 联系人Email
+    public String superSatr ;       // 上级主管
 
+    public String getSuperSatr() {
+        return superSatr;
+    }
+
+    public void setSuperSatr(String superSatr) {
+        this.superSatr = superSatr;
+    }
 
     public String getConBuildUnit() {
         return conBuildUnit;

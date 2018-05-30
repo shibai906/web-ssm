@@ -8,6 +8,7 @@ create table CON_BUILD_UNIT_MESS(
 	ENTER_ADDRESS varchar(256),		-- 企业地址
 	REMARK text ,				-- 备注
 	ENTER_TYPE char(2) ,			-- 企业性质
+	SUPER_SATR varchar(32) ,    -- 企业主管
 	ENTER_APTITUDE varchar(128) ,		-- 企业资质
 	ENTER_CODE varchar(64) ,		-- 企业代码
 	ENTER_HONOR varchar(32) ,		-- 企业联系人
