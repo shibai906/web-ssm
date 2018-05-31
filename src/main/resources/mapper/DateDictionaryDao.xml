@@ -27,7 +27,11 @@
     </select>
 
     <select id="queryAll" resultMap="dateDictionary" >
-        select * from DATA_DICTIONARY where del_sign=0
+        select * from DATA_DICTIONARY where del_sign=0 order by UPDATE_TIME desc limit #{pageSize},#{pageNum}
+    </select>
+
+    <select id="queryCountAll" resultType="int">
+        select count(1) DATA_DICTIONARY where del_sign=0
     </select>
 
     <update id="update" parameterType="DateDictionary">

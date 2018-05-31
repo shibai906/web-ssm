@@ -43,7 +43,12 @@ public class ConAddToInforServiceImp implements ConAddToInforService {
     }
 
     @Override
-    public List<ConAddToInfor> queryAll() {
-        return conAddToInforDao.queryAll();
+    public List<ConAddToInfor> queryAll(ConAddToInfor conAddToInfor)  {
+        return conAddToInforDao.queryAll(conAddToInfor);
+    }
+
+    @Override
+    public int queryCountAll() {
+        return conAddToInforDao.queryCountAll();
     }
 }

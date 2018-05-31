@@ -36,9 +36,7 @@ public class DateDictionaryController {
     @RequestMapping(value="/queryAll", method={RequestMethod.POST,RequestMethod.GET})
     public Object queryAll(){
 
-        List<DateDictionary> dateDictionarys = dateDictionaryService.queryAll() ;
-        for(DateDictionary dateDictionary : dateDictionarys)
-            System.out.println(dateDictionary);
+
         return "" ;
     }
 

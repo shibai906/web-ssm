@@ -41,7 +41,12 @@ public class DateDictionaryServiceImp implements DateDictionaryService {
     }
 
     @Override
-    public List<DateDictionary> queryAll() {
-        return dateDictionaryDao.queryAll();
+    public List<DateDictionary> queryAll(DateDictionary dateDictionary) {
+        return dateDictionaryDao.queryAll(dateDictionary);
+    }
+
+    @Override
+    public int queryCountAll() {
+        return dateDictionaryDao.queryCountAll();
     }
 }

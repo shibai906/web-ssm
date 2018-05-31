@@ -41,7 +41,12 @@ public class ConBasicInforServiceImp implements ConBasicInforService {
     }
 
     @Override
-    public List<ConBasicInfor> queryAll() {
-        return conBasicInforDao.queryAll();
+    public List<ConBasicInfor> queryAll(ConBasicInfor conBasicInfor) {
+        return conBasicInforDao.queryAll(conBasicInfor);
+    }
+
+    @Override
+    public int queryCountAll() {
+        return conBasicInforDao.queryCountAll();
     }
 }

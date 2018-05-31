@@ -25,7 +25,7 @@
     <li><a href="skip/five" target="right"><span class="icon-caret-right"></span>合同变更管理</a></li>
     <li><a href="skip/three" target="right"><span class="icon-caret-right"></span>合同执行跟踪</a></li>
     <li><a href="skip/six" target="right"><span class="icon-caret-right"></span>合同与概算对比</a></li>
-    <li><a href="skip/two" target="right"><span class="icon-caret-right"></span>承建单位信息管理</a></li>
+    <li><a href="skip/two?num=1" target="right"><span class="icon-caret-right"></span>承建单位信息管理</a></li>
     <li><a href="skip/one" target="right"><span class="icon-caret-right"></span>合同基本信息查询</a></li>
   </ul>
 </div>

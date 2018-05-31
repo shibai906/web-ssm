@@ -27,9 +27,11 @@
     </select>
 
     <select id="queryAll" parameterType="ConAddToInfor" resultMap="conAddToInfor">
-      select * from CON_ADD_TO_INFOR where del_sign=0;
+      select * from CON_ADD_TO_INFOR where del_sign=0 order by UPDATE_TIME desc limit #{pageSize},#{pageNum}
     </select>
-
+    <select id="queryCountAll" resultType="int">
+        select count(1) CON_ADD_TO_INFOR where del_sign=0 ;
+    </select>
     <update id="update" parameterType="ConAddToInfor">
         update CON_ADD_TO_INFOR set
         <if test="CON_BASIC_INFOR != null">CON_BASIC_INFOR = #{conBasicInfor},</if>

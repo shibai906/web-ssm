@@ -41,7 +41,12 @@ public class ConBuildUnitMessServiceImp implements ConBuildUnitMessService {
     }
 
     @Override
-    public List<ConBuildUnitMess> queryAll() {
-        return conBuildUnitMessDao.queryAll();
+    public List<ConBuildUnitMess> queryAll(ConBuildUnitMess conBuildUnitMess) {
+        return conBuildUnitMessDao.queryAll(conBuildUnitMess);
+    }
+
+    @Override
+    public int queryCountAll() {
+        return conBuildUnitMessDao.queryCountAll();
     }
 }

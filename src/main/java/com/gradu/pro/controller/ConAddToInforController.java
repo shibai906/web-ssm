@@ -35,9 +35,6 @@ public class ConAddToInforController {
     @RequestMapping(value="/queryAll", method={RequestMethod.POST,RequestMethod.GET})
     public Object queryAll(){
 
-        List<ConAddToInfor> conAddToInfors = conAddToInforService.queryAll() ;
-        for(ConAddToInfor conAddToInfor : conAddToInfors)
-            System.out.println(conAddToInfor);
         return "" ;
     }
 

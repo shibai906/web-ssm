@@ -36,7 +36,11 @@
     </select>
 
     <select id="queryAll" resultMap="conBasicInfor">
-        select * from CON_BASIC_INFOR where del_sign=0;
+        select * from CON_BASIC_INFOR where del_sign=0 order by UPDATE_TIME desc limit #{pageSize},#{pageNum}
+    </select>
+
+    <select id="queryCountAll" resultType="int">
+        select count(1) from CON_BASIC_INFOR where del_sign=0
     </select>
 
     <update id="update" parameterType="ConBasicInfor">

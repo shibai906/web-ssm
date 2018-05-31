@@ -128,9 +128,7 @@ public class ConBasicInforController {
     @RequestMapping(value="/queryAll", method={RequestMethod.POST,RequestMethod.GET})
     public Object queryAll(){
 
-        List<ConBasicInfor> conBasicInfors = conBasicInforService.queryAll() ;
-        for(ConBasicInfor conBasicInfor : conBasicInfors)
-            System.out.println(conBasicInfor);
+
         return "" ;
     }
 

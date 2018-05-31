@@ -35,16 +35,13 @@ public class ConBuildUnitMessController {
     @RequestMapping(value="/queryAll", method={RequestMethod.POST,RequestMethod.GET})
     public Object queryAll(){
 
-        List<ConBuildUnitMess> conBuildUnitMesss = conBuildUnitMessService.queryAll() ;
-        for(ConBuildUnitMess conBuildUnitMess : conBuildUnitMesss)
-            System.out.println(conBuildUnitMess);
         return "" ;
     }
 
     @RequestMapping(value="/delUpdate", method={RequestMethod.POST,RequestMethod.GET})
     public Object delUpdate(String id){
         conBuildUnitMessService.delUpdate(id);
-        return "" ;
+        return "redirect:/skip/two?num=1";
     }
 
     @RequestMapping(value="/update", method={RequestMethod.POST,RequestMethod.GET})

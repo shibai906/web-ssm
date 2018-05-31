@@ -8,6 +8,6 @@ public interface CommonFeildService<T> {
     List<T> querySearch(T t) ;
     void update(T t);
     void delUpdate(String id) ;
-    List<T> queryAll() ;
-
+    List<T> queryAll(T t) ;
+    int queryCountAll() ;
 }
