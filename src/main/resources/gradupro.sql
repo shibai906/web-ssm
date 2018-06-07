@@ -32,6 +32,7 @@ CREATE TABLE CON_BASIC_INFOR(
 	CON_AMOUT Decimal(10,2)	,		-- 合同金额
 	SEL_BUDGET varchar(63) ,		-- 选择概算
 	CON_ACCESS varchar(255) ,		-- 合同附件
+	STATUS int ,                -- 合同执行状态
 	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
@@ -63,7 +64,16 @@ CREATE TABLE DATA_DICTIONARY(
 	UPDATE_TIME bigint 			-- 更新日期
 );
 
-
+CREATE TABLE CON_BASIC_INFOR_MONTH(
+  id char(36) PRIMARY KEY ,   -- 唯一uuid
+  con_basic_infor char(36) ,  -- 合同id
+  year char(4) ,              -- 年
+  month char(2) ,             -- 月
+  EXPEND Decimal(10,2) ,		-- 追加金额
+  DEL_SIGN int ,				-- 删除标志
+  CREATE_TIME bigint ,			-- 创建日期
+	UPDATE_TIME bigint 			-- 更新日期
+);
 
 
 

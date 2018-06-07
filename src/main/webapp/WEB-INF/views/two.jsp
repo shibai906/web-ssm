@@ -33,9 +33,9 @@
                         <div class="col-md-4">
                             <td>
                                 <select id="contract" name="enterType" class="selectpicker show-tick form-control" data-live-search="false">
-                                    <option value="0">请选择企业性质</option>
-                                    <option value="1">请选择企业性质1</option>
-                                    <option value="2">请选择企业性质2</option>
+                                    <c:forEach items="${con_nature}" var="cn">
+                                        <option value="${cn.field}">${cn.typeName}</option>
+                                    </c:forEach>
                                 </select>
                             </td>
                         </div>
@@ -172,7 +172,7 @@
               <td>${list.enterAptitude}</td>
               <td>${list.enterHonor}</td>
               <td>${list.enterType}</td>
-              <td><a class="button border-main" href="add.html">修改</a><a class="button border-main" href="${pageContext.request.contextPath}/cbum/delUpdate?id=${list.id}">删除</a><a class="button border-main" href="add.html">查看全部</a></td>
+              <td><a class="button border-main" href="${pageContext.request.contextPath}/cbum/delUpdate?id=${list.id}">删除</a><a class="button border-main" href="${pageContext.request.contextPath}/cbum/query?id=${list.id}">查看</a></td>
             </tr>
            </c:forEach>
             <tr>

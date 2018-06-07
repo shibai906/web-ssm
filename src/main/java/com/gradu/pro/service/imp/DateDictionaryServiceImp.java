@@ -49,4 +49,9 @@ public class DateDictionaryServiceImp implements DateDictionaryService {
     public int queryCountAll() {
         return dateDictionaryDao.queryCountAll();
     }
+
+    @Override
+    public List<DateDictionary> getName(String name) {
+        return dateDictionaryDao.getName(name);
+    }
 }

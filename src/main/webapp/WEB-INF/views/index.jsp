@@ -13,7 +13,7 @@
 <body style="background-color:#f2f9fd;">
 <div class="header bg-main">
   <div class="logo margin-big-left fadein-top">
-    <h1><img src="images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
+    <h1><img src="images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" /></h1>
   </div>
 
 </div>
@@ -21,10 +21,10 @@
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
   <h2><span class="icon-user"></span>基本设置</h2>
   <ul style="display:block">
-    <li><a href="skip/four" target="right"><span class="icon-caret-right"></span>合同基本信息管理</a></li>
+    <li><a href="skip/four?num=1" target="right"><span class="icon-caret-right"></span>合同基本信息管理</a></li>
     <li><a href="skip/five" target="right"><span class="icon-caret-right"></span>合同变更管理</a></li>
     <li><a href="skip/three" target="right"><span class="icon-caret-right"></span>合同执行跟踪</a></li>
-    <li><a href="skip/six" target="right"><span class="icon-caret-right"></span>合同与概算对比</a></li>
+    <li><a href="skip/six" target="right"><span class="icon-caret-right"></span>合同基本信息添加</a></li>
     <li><a href="skip/two?num=1" target="right"><span class="icon-caret-right"></span>承建单位信息管理</a></li>
     <li><a href="skip/one" target="right"><span class="icon-caret-right"></span>合同基本信息查询</a></li>
   </ul>
@@ -45,14 +45,9 @@ $(function(){
 <ul class="bread">
   <li><a href="{:U('Index/info')}" target="right" class="icon-home"> 首页</a></li>
   <li><a href="##" id="a_leader_txt">网站信息</a></li>
-  <li><b>当前语言：</b><span style="color:red;">中文</span>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;切换语言：<a href="##">中文</a> &nbsp;&nbsp;<a href="##">英文</a> </li>
-</ul>
+
 <div class="admin">
-  <iframe scrolling="auto" rameborder="0" src="info.html" name="right" width="100%" height="100%"></iframe>
-</div>
-<div style="text-align:center;">
-<p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+  <iframe scrolling="auto" rameborder="0" src="skip/four?num=1" name="right" width="100%" height="100%"></iframe>
 </div>
 </body>
 </html>

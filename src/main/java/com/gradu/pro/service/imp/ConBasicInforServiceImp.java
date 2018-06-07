@@ -2,6 +2,7 @@ package com.gradu.pro.service.imp;
 
 import com.gradu.pro.dao.ConBasicInforDao;
 import com.gradu.pro.model.ConBasicInfor;
+import com.gradu.pro.model.ConBasicInforForm;
 import com.gradu.pro.service.ConBasicInforService;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +49,15 @@ public class ConBasicInforServiceImp implements ConBasicInforService {
     @Override
     public int queryCountAll() {
         return conBasicInforDao.queryCountAll();
+    }
+
+    @Override
+    public List<ConBasicInfor> search(ConBasicInforForm conBasicInforForm) {
+        return conBasicInforDao.search(conBasicInforForm);
+    }
+
+    @Override
+    public Integer searchCount(ConBasicInforForm conBasicInforForm) {
+        return conBasicInforDao.searchCount(conBasicInforForm);
     }
 }

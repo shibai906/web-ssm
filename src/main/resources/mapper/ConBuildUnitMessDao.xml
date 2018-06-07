@@ -34,6 +34,10 @@
 
     </select>
 
+    <select id="getAllCbum" parameterType="ConBuildUnitMess" resultMap="conBuildUnitMess" >
+        select * from CON_BUILD_UNIT_MESS where del_sign=0 order by UPDATE_TIME desc
+    </select>
+    
     <select id="queryAll" parameterType="ConBuildUnitMess" resultMap="conBuildUnitMess" >
         select * from CON_BUILD_UNIT_MESS where del_sign=0 order by UPDATE_TIME desc limit #{pageSize},#{pageNum}
     </select>

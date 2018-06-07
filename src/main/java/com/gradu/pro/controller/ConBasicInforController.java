@@ -1,10 +1,15 @@
 package com.gradu.pro.controller;
 
 import com.gradu.pro.model.ConBasicInfor;
+import com.gradu.pro.model.ConBuildUnitMess;
+import com.gradu.pro.model.DateDictionary;
 import com.gradu.pro.service.ConBasicInforService;
+import com.gradu.pro.service.ConBuildUnitMessService;
+import com.gradu.pro.service.DateDictionaryService;
 import com.gradu.pro.util.DateUtils;
 import com.gradu.pro.util.FileUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.annotation.Resource;
+import javax.security.sasl.SaslServer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -25,7 +31,13 @@ import java.util.List;
 public class ConBasicInforController {
 
     @Resource
+    private DateDictionaryService dateDictionaryService ;
+
+    @Resource
     private ConBasicInforService conBasicInforService ;
+
+    @Resource
+    private ConBuildUnitMessService conBuildUnitMessService ;
 
     /*
     这里是第一种添加方式
@@ -105,11 +117,13 @@ public class ConBasicInforController {
             conBasicInfor.setConName(request.getParameter("conName")) ;
             conBasicInfor.setConType(request.getParameter("conType")) ;
             conBasicInfor.setConBuildUnit(request.getParameter("conBuildUnit")) ;
-            conBasicInfor.setConDate(DateUtils.getDate(request.getParameter("conDate"))) ;
+            if(DateUtils.getDate(request.getParameter("conDate")) != null)
+                conBasicInfor.setConDate(DateUtils.getDate(request.getParameter("conDate"))) ;
             conBasicInfor.setConAmout(new BigDecimal(request.getParameter("conAmout"))) ;
             conBasicInfor.setProjectLinkman(request.getParameter("projectLinkman")) ;
             conBasicInfor.setRemark(request.getParameter("remark")) ;
             conBasicInfor.setSelBudget(request.getParameter("selBudget")) ;
+            conBasicInfor.setStatus(1);
             conBasicInforService.insert(conBasicInfor);
             System.out.println("conBasicInfor="+conBasicInfor);
         }
@@ -118,11 +132,17 @@ public class ConBasicInforController {
     }
 
     @RequestMapping(value="/query", method={RequestMethod.POST,RequestMethod.GET})
-    public Object query(String id){
+    public Object query(Model model , String id){
 
         ConBasicInfor conBasicInfor = conBasicInforService.query(id) ;
-        System.out.println(conBasicInfor);
-        return "" ;
+        System.out.println("conBasicInfor:"+conBasicInfor);
+        conBasicInfor.setConDateString(DateUtils.converDate(conBasicInfor.getConDate()));
+        model.addAttribute("cbi",conBasicInfor) ;
+        List<ConBuildUnitMess> conBuildUnitMesses = conBuildUnitMessService.getAllCbum();
+        model.addAttribute("cbum",conBuildUnitMesses) ;
+        List<DateDictionary> dateDictionaries = dateDictionaryService.getName("con_type") ;
+        model.addAttribute("con_type",dateDictionaries) ;
+        return "update_six" ;
     }
 
     @RequestMapping(value="/queryAll", method={RequestMethod.POST,RequestMethod.GET})
@@ -135,16 +155,13 @@ public class ConBasicInforController {
     @RequestMapping(value="/delUpdate", method={RequestMethod.POST,RequestMethod.GET})
     public Object delUpdate(String id){
         conBasicInforService.delUpdate(id);
-        return "" ;
+        return "redirect:/skip/four?num=1";
     }
 
     @RequestMapping(value="/update", method={RequestMethod.POST,RequestMethod.GET})
-    public Object update(ConBasicInfor conBasicInfor){
-
+    public Object update(ConBasicInfor conBasicInfor,Model model){
         conBasicInforService.update(conBasicInfor);
-        ConBasicInfor conBasicInfor1 = conBasicInforService.query(conBasicInfor.getId()) ;
-        System.out.println(conBasicInfor1);
-        return "" ;
+        return "redirect:/skip/four?num=1";
     }
 
 

@@ -2,6 +2,7 @@ package com.gradu.pro.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DateUtils {
 
@@ -35,6 +36,12 @@ public class DateUtils {
             e.printStackTrace();
         }
         return 0L ;
+    }
+
+    public static String converDate(long date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd") ;
+        Date date1 = new Date(date) ;
+        return simpleDateFormat.format(date1) ;
     }
 
 }

@@ -10,10 +10,46 @@ public class ConBasicInfor extends CommonFeild {
     public long conDate ;               // 签订日期
     public String projectLinkman ;      // 项目联系人
     public String remark ;              // 备注
-    public String conBuildUnit ;        // 承建单位
+    public String conBuildUnitMessId ;  // 承建单位
     public BigDecimal conAmout ;        // 合同金额
     public String selBudget ;           // 选择概算
     public String conAccess ;           // 合同附件
+    public int status ;                 // 合同执行状态
+    public String conDateString ;       // 签订时间转换
+
+    public String getConBuildUnitMessId() {
+        return conBuildUnitMessId;
+    }
+
+    public void setConBuildUnitMessId(String conBuildUnitMessId) {
+        this.conBuildUnitMessId = conBuildUnitMessId;
+    }
+
+    public String getConDateString() {
+        return conDateString;
+    }
+
+    public void setConDateString(String conDateString) {
+        this.conDateString = conDateString;
+    }
+
+    public ConBuildUnitMess conBuildUnitMess ;      // 合同承建单位
+
+    public ConBuildUnitMess getConBuildUnitMess() {
+        return conBuildUnitMess;
+    }
+
+    public void setConBuildUnitMess(ConBuildUnitMess conBuildUnitMess) {
+        this.conBuildUnitMess = conBuildUnitMess;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getConSerialNum() {
         return conSerialNum;
@@ -64,11 +100,11 @@ public class ConBasicInfor extends CommonFeild {
     }
 
     public String getConBuildUnit() {
-        return conBuildUnit;
+        return conBuildUnitMessId;
     }
 
-    public void setConBuildUnit(String conBuildUnit) {
-        this.conBuildUnit = conBuildUnit;
+    public void setConBuildUnit(String conBuildUnitMessId) {
+        this.conBuildUnitMessId = conBuildUnitMessId;
     }
 
     public BigDecimal getConAmout() {
@@ -105,7 +141,7 @@ public class ConBasicInfor extends CommonFeild {
                 ", conDate=" + conDate +
                 ", projectLinkman='" + projectLinkman + '\'' +
                 ", remark='" + remark + '\'' +
-                ", conBuildUnit='" + conBuildUnit + '\'' +
+                ", conBuildUnit='" + conBuildUnitMessId + '\'' +
                 ", conAmout=" + conAmout +
                 ", selBudget='" + selBudget + '\'' +
                 ", conAccess='" + conAccess + '\'' +

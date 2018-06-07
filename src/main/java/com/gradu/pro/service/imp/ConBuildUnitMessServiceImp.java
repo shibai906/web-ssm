@@ -49,4 +49,9 @@ public class ConBuildUnitMessServiceImp implements ConBuildUnitMessService {
     public int queryCountAll() {
         return conBuildUnitMessDao.queryCountAll();
     }
+
+    @Override
+    public List<ConBuildUnitMess> getAllCbum() {
+        return conBuildUnitMessDao.getAllCbum();
+    }
 }

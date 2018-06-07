@@ -6,9 +6,9 @@ public class CommonFeild {
 
     public int pageSize ;
     public int pageNum ;
-    private String id ;
-    private long createTime ;
-    private long updateTime ;
+    public String id ;
+    public long createTime ;
+    public long updateTime ;
 
     public String getId() {
         if(id == null || id.trim().equals("")) {

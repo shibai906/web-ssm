@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.gradu.pro.dao.ConBasicInforDao">
+
+    <resultMap id="conBasicInfor" type="ConBasicInfor" >
+        <id column="id" property="id"/>
+        <result column="CON_SERIAL_NUM" property="conSerialNum"/>
+        <result column="CON_NAME" property="conName"/>
+        <result column="CON_TYPE" property="conType"/>
+        <result column="CON_DATE" property="conDate"/>
+        <result column="PROJECT_LINKMAN" property="projectLinkman"/>
+        <result column="REMARK" property="remark"/>
+        <result column="CON_BUILD_UNIT_MESS_ID" property="conBuildUnitMessId"/>
+        <result column="CON_AMOUT" property="conAmout"/>
+        <result column="SEL_BUDGET" property="selBudget"/>
+        <result column="CON_ACCESS" property="conAccess"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+        <result column="STATUS" property="status"/>
+        <association property="conBuildUnitMess" javaType="ConBuildUnitMess">
+            <id column="id" property="id"/>
+            <result column="CON_BUILD_UNIT" property="conBuildUnit"/>
+            <result column="BUSI_LICENSE_NUM" property="busiLicenseNum"/>
+            <result column="ENTER_LEGAL" property="enterLegal"/>
+            <result column="LINKMAN_IPHONE" property="linkmanIphone"/>
+            <result column="ENTER_ADDRESS" property="enterAddress"/>
+            <result column="REMARK" property="remark"/>
+            <result column="SUPER_SATR" property="superSatr"/>
+            <result column="ENTER_TYPE" property="enterType"/>
+            <result column="ENTER_APTITUDE" property="enterAptitude"/>
+            <result column="ENTER_CODE" property="enterCode"/>
+            <result column="ENTER_HONOR" property="enterHonor"/>
+            <result column="HONER_EMAIL" property="honerEmail"/>
+            <result column="CREATE_TIME" property="createTime"/>
+            <result column="UPDATE_TIME" property="updateTime"/>
+        </association>
+    </resultMap>
+
+    <insert id="insert" parameterType="ConBasicInfor">
+        insert into CON_BASIC_INFOR(id,CON_SERIAL_NUM,CON_NAME,CON_TYPE,CON_DATE
+        ,PROJECT_LINKMAN,REMARK,CON_BUILD_UNIT_MESS_ID,CON_AMOUT,SEL_BUDGET,CON_ACCESS,
+        CREATE_TIME,UPDATE_TIME,status,del_sign)
+        values (#{id},#{conSerialNum},#{conName},#{conType},#{conDate},#{projectLinkman},#{remark},#{conBuildUnitMessId},
+        #{conAmout},#{selBudget},#{conAccess},#{createTime},#{updateTime},#{status},0)
+    </insert>
+    <select id="query" resultMap="conBasicInfor" parameterType="string">
+        select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.id=#{value} and cbi.del_sign=0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id
+    </select>
+
+
+
+    <select id="search" parameterType="ConBasicInfor" resultMap="conBasicInfor" >
+        select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.del_sign = 0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id
+        <if test="conSerialNum != null"> and cbi.CON_SERIAL_NUM like '%${conSerialNum}%'</if>
+        <if test="conName != null"> and cbi.CON_NAME like '%${conName}%'</if>
+        <if test="conAmoutMax != null"> and cbi.CON_AMOUT &lt; #{conAmoutMax}</if>
+        <if test="conAmoutMin != null"> and cbi.CON_AMOUT &gt; #{conAmoutMin}</if>
+        <if test="timeMaxL != 0"> and cbi.CON_DATE &lt; #{timeMaxL}</if>
+        <if test="timeMinL != 0"> and cbi.CON_DATE &gt; #{timeMinL}</if>
+        <if test="status != 0"> and status = #{status}</if>
+        order by cbi.UPDATE_TIME desc limit #{pageSize},#{pageNum}
+    </select>
+
+    <select id="searchCount" parameterType="ConBasicInforForm" resultType="int">
+        select count(1) from CON_BASIC_INFOR where del_sign = 0
+        <if test="conSerialNum != null"> and CON_SERIAL_NUM like '%${conSerialNum}%'</if>
+        <if test="conName != null"> and CON_NAME like '%${conName}%'</if>
+        <if test="conAmoutMax != null"> and CON_AMOUT &lt; #{conAmoutMax}</if>
+        <if test="conAmoutMin != null"> and CON_AMOUT &gt; #{conAmoutMin}</if>
+        <if test="timeMaxL != 0"> and CON_DATE &lt; #{timeMaxL}</if>
+        <if test="timeMinL != 0"> and CON_DATE &gt; #{timeMinL}</if>
+        <if test="status != 0"> and status = #{status}</if>
+        order by UPDATE_TIME desc
+    </select>
+
+
+    <select id="queryAll" resultMap="conBasicInfor">
+        select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.del_sign=0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id order by cbi.UPDATE_TIME desc limit #{pageSize},#{pageNum}
+    </select>
+
+    <select id="queryCountAll" resultType="int">
+        select count(1) from CON_BASIC_INFOR where del_sign=0
+    </select>
+
+    <update id="update" parameterType="ConBasicInfor">
+        update CON_BASIC_INFOR set
+        <if test="conSerialNum != null">CON_SERIAL_NUM = #{conSerialNum},</if>
+        <if test="conName != null">CON_NAME = #{conName},</if>
+        <if test="conType != null">CON_TYPE = #{conType},</if>
+        <if test="projectLinkman != null">PROJECT_LINKMAN = #{projectLinkman},</if>
+        REMARK = #{remark},
+        <if test="conBuildUnitMessId != null">CON_BUILD_UNIT_MESS_ID = #{conBuildUnitMessId},</if>
+        <if test="conAmout != null">CON_AMOUT = #{conAmout},</if>
+        <if test="selBudget != null">SEL_BUDGET = #{selBudget},</if>
+        <if test="conAccess != null">CON_ACCESS = #{conAccess},</if>
+        UPDATE_TIME = #{updateTime}
+        where id=#{id}
+    </update>
+
+    <update id="delUpdate" parameterType="string">
+        update CON_BASIC_INFOR set del_sign=1 where id=#{value}
+    </update>
+
+</mapper>

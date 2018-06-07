@@ -24,9 +24,8 @@
                     <div class="col-md-2">
                       <td style="width: 20%;">
                         <select id="find" name="find" class="selectpicker show-tick form-control" data-live-search="false">
-                            <option value="0">请选择查询条件</option>
-                            <option value="1">请选择查询条件</option>
-                            <option value="2">请选择查询条件</option>
+                            <option value="">合同编号</option>
+                            <option value="">合同名称</option>
                         </select>
                       </td>
                     </div>

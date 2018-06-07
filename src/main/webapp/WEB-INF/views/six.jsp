@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="zh-cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,19 +48,21 @@
                       <div class="col-md-2"><td>合同类型</td></div>
                       <div class="col-md-4">
                         <td>
-                           <select id="contract" name="conType" class="selectpicker show-tick form-control" data-live-search="false">
-                                        <option value="0">--请选择合同类型--</option>
-                                        <option value="1">施工合同1</option>
-                                        <option value="2">施工合同2</option>
+                            <select id="contract" name="conType" class="selectpicker show-tick form-control" data-live-search="false">
+                                <c:forEach items="${con_type}" var="ct">
+                                    <option value="${ct.field}">${ct.typeName}</option>
+                                </c:forEach>
                             </select>
                         </td>
                       </div>
                       <div class="col-md-2"><td>承建单位</td></div>
                       <div class="col-md-4">
                         <td>
-                            <div class="form-group">
-                                <input type="text" name="conBuildUnit" class="form-control" id="name" placeholder="请输入合同名称"/>
-                            </div>
+                            <select id="contract" name="conBuildUnit" class="selectpicker show-tick form-control" data-live-search="false">
+                                <c:forEach items="${cbum}" var="cb">
+                                    <option value="${cb.id}">${cb.conBuildUnit}</option>
+                                </c:forEach>
+                            </select>
                         </td>
                       </div>
                   </div>
@@ -140,8 +143,6 @@
           </tbody>
         </table>
       </form>
-    <div class="panel-title">信息列表</div>
-
     <script type="text/javascript">
         i = 1;
         $(document).ready(function(){
