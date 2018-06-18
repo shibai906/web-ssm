@@ -29,7 +29,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" name="conSerialNum" class="form-control" id="name" placeholder="请输入合同编号"/>
+                              <input type="text" name="conSerialNum" class="form-control" id="name" placeholder="请输入合同编号" required />
                           </div>
                       </td>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" name="conName" class="form-control" id="name" placeholder="请输入合同名称"/>
+                              <input type="text" name="conName" class="form-control" id="name" placeholder="请输入合同名称" required />
                           </div>
                       </td>
                     </div>
@@ -58,7 +58,7 @@
                       <div class="col-md-2"><td>承建单位</td></div>
                       <div class="col-md-4">
                         <td>
-                            <select id="contract" name="conBuildUnit" class="selectpicker show-tick form-control" data-live-search="false">
+                            <select id="contract" name="conBuildUnit" required class="selectpicker show-tick form-control" data-live-search="false">
                                 <c:forEach items="${cbum}" var="cb">
                                     <option value="${cb.id}">${cb.conBuildUnit}</option>
                                 </c:forEach>
@@ -73,7 +73,7 @@
                     <div class="col-md-4">
                       <td style="position: relative;">
                         <div class="form-group">
-                            <input type="date" name="conDate" class="form-control" id="name" placeholder="请输入合同名称"/>
+                            <input type="date" name="conDate" required class="form-control" id="name" placeholder="请输入合同名称"/>
                        </div>
                       </td>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" name="conAmout" class="form-control" id="name" placeholder="请输入合同金额"/>
+                              <input type="text" name="conAmout" required pattern="[0-9]*(\.[0-9]+)?" class="form-control" id="name" placeholder="请输入合同金额"/>
                           </div>
                       </td>
                     </div>
@@ -93,15 +93,15 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="projectLinkman" type="text" class="form-control" id="name" placeholder="请输入项目联系人"/>
+                              <input name="projectLinkman" type="text" required class="form-control" id="name" placeholder="请输入项目联系人"/>
                           </div>
                       </td>
                     </div>
-                    <div class="col-md-2"><td>选择概算</td></div>
+                    <div class="col-md-2"><td>概算</td></div>
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="selBudget" type="text" class="form-control" id="name" placeholder="请输入概算"/>
+                              <input name="selBudget" type="text" required class="form-control" id="name" placeholder="请输入概算"/>
                           </div>
                       </td>
                     </div>

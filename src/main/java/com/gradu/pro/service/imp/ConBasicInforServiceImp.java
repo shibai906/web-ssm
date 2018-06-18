@@ -60,4 +60,19 @@ public class ConBasicInforServiceImp implements ConBasicInforService {
     public Integer searchCount(ConBasicInforForm conBasicInforForm) {
         return conBasicInforDao.searchCount(conBasicInforForm);
     }
+
+    @Override
+    public List<ConBasicInfor> conditionSearch(ConBasicInfor conBasicInfor) {
+        return conBasicInforDao.conditionSearch(conBasicInfor);
+    }
+
+    @Override
+    public void termina(ConBasicInfor conBasicInfor) {
+        conBasicInforDao.termina(conBasicInfor);
+    }
+
+    @Override
+    public List<ConBasicInfor> searchMap(ConBasicInfor conBasicInfor) {
+        return conBasicInforDao.searchMap(conBasicInfor);
+    }
 }

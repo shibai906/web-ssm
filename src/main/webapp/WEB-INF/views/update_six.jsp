@@ -30,7 +30,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" value="${cbi.conSerialNum}" name="conSerialNum" class="form-control" id="name" placeholder="请输入合同编号"/>
+                              <input type="text" required value="${cbi.conSerialNum}" name="conSerialNum" class="form-control" id="name" placeholder="请输入合同编号"/>
                           </div>
                       </td>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" value="${cbi.conName}" name="conName" class="form-control" id="name" placeholder="请输入合同名称"/>
+                              <input type="text" required value="${cbi.conName}" name="conName" class="form-control" id="name" placeholder="请输入合同名称"/>
                           </div>
                       </td>
                     </div>
@@ -49,7 +49,7 @@
                       <div class="col-md-2"><td>合同类型</td></div>
                       <div class="col-md-4">
                         <td>
-                            <select id="contract" value="${cbi.conType}" name="conType" class="selectpicker show-tick form-control" data-live-search="false">
+                            <select id="contract"  value="${cbi.conType}" name="conType" class="selectpicker show-tick form-control" data-live-search="false">
                                 <c:forEach items="${con_type}" var="ct">
                                     <option value="${ct.field}">${ct.typeName}</option>
                                 </c:forEach>
@@ -59,9 +59,9 @@
                       <div class="col-md-2"><td>承建单位</td></div>
                       <div class="col-md-4">
                         <td>
-                            <select id="contract" value="${cbi.conBuildUnit}" name="conBuildUnit" class="selectpicker show-tick form-control" data-live-search="false">
+                            <select id="contract" required value="${cbi.conBuildUnitMessId}" name="conBuildUnit" class="selectpicker show-tick form-control" data-live-search="false">
                                 <c:forEach items="${cbum}" var="cb">
-                                    <option value="${cb.id}">${cb.conBuildUnit}</option>
+                                    <option value="${cb.id}" <c:if test="${cb.id.equals(cbi.conBuildUnitMessId)}">selected</c:if> >${cb.conBuildUnit}</option>
                                 </c:forEach>
                             </select>
                         </td>
@@ -82,7 +82,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input type="text" value="${cbi.conAmout}" name="conAmout" class="form-control" id="name" placeholder="请输入合同金额"/>
+                              <input type="text" required pattern="[0-9]*(\.[0-9]+)?" value="${cbi.conAmout}" name="conAmout" class="form-control" id="name" placeholder="请输入合同金额"/>
                           </div>
                       </td>
                     </div>
@@ -94,7 +94,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="projectLinkman" value="${cbi.projectLinkman}" type="text" class="form-control" id="name" placeholder="请输入项目联系人"/>
+                              <input name="projectLinkman" required value="${cbi.projectLinkman}" type="text" class="form-control" id="name" placeholder="请输入项目联系人"/>
                           </div>
                       </td>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="selBudget" value="${cbi.selBudget}" type="text" class="form-control" id="name" placeholder="请输入概算"/>
+                              <input name="selBudget" required value="${cbi.selBudget}" type="text" class="form-control" id="name" placeholder="请输入概算"/>
                           </div>
                       </td>
                     </div>

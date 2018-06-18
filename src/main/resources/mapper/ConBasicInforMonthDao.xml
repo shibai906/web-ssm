@@ -16,9 +16,14 @@
 
 
     <select id="queryYear" parameterType="ConBasicInforMonth" resultMap="conBasicInforMonth">
-      select * from CON_BASIC_INFOR_MONTH where del_sign=0 and con_basic_infor=#{conBasicInfor} and year=#{year}
+      select * from CON_BASIC_INFOR_MONTH where del_sign=0 and con_basic_infor=#{conBasicInfor} and year=#{year} and del_sign=0 order by create_time
     </select>
-
+    <insert id="insert" parameterType="ConBasicInforMonth">
+        insert into con_basic_infor_month(id,con_basic_infor,year,month,expend,create_time,update_time,del_sign) values (#{id},#{conBasicInfor},#{year},#{month},#{expend},#{createTime},#{updateTime},0)
+    </insert>
+    <update id="update" parameterType="ConBasicInforMonth">
+        update con_basic_infor_month set expend=#{expend},update_time=#{updateTime} where id=#{id}
+    </update>
     <!--<insert id="insert" parameterType="ConAddToInfor">
       insert into CON_BASIC_INFOR_MONTH(id,con_basic_infor,'YEAR','MONTH',EXPEND,CREATE_TIME,UPDATE_TIME,del_sign)
         values(#{id},#{conBasicInfor},#{year},#{month},#{expend},#{createTime},#{updateTime},0);

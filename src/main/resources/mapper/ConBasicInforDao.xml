@@ -19,6 +19,7 @@
         <result column="CREATE_TIME" property="createTime"/>
         <result column="UPDATE_TIME" property="updateTime"/>
         <result column="STATUS" property="status"/>
+        <result column="termina" property="termina" />
         <association property="conBuildUnitMess" javaType="ConBuildUnitMess">
             <id column="id" property="id"/>
             <result column="CON_BUILD_UNIT" property="conBuildUnit"/>
@@ -41,9 +42,9 @@
     <insert id="insert" parameterType="ConBasicInfor">
         insert into CON_BASIC_INFOR(id,CON_SERIAL_NUM,CON_NAME,CON_TYPE,CON_DATE
         ,PROJECT_LINKMAN,REMARK,CON_BUILD_UNIT_MESS_ID,CON_AMOUT,SEL_BUDGET,CON_ACCESS,
-        CREATE_TIME,UPDATE_TIME,status,del_sign)
+        CREATE_TIME,UPDATE_TIME,status,termina,del_sign)
         values (#{id},#{conSerialNum},#{conName},#{conType},#{conDate},#{projectLinkman},#{remark},#{conBuildUnitMessId},
-        #{conAmout},#{selBudget},#{conAccess},#{createTime},#{updateTime},#{status},0)
+        #{conAmout},#{selBudget},#{conAccess},#{createTime},#{updateTime},#{status},1,0)
     </insert>
     <select id="query" resultMap="conBasicInfor" parameterType="string">
         select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.id=#{value} and cbi.del_sign=0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id
@@ -63,6 +64,13 @@
         order by cbi.UPDATE_TIME desc limit #{pageSize},#{pageNum}
     </select>
 
+    <select id="searchMap" parameterType="ConBasicInfor" resultMap="conBasicInfor" >
+        select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.del_sign = 0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id
+        <if test="conSerialNum != null"> and cbi.CON_SERIAL_NUM like '%${conSerialNum}%'</if>
+        <if test="conName != null"> and cbi.CON_NAME like '%${conName}%'</if>
+        order by cbi.UPDATE_TIME desc
+    </select>
+
     <select id="searchCount" parameterType="ConBasicInforForm" resultType="int">
         select count(1) from CON_BASIC_INFOR where del_sign = 0
         <if test="conSerialNum != null"> and CON_SERIAL_NUM like '%${conSerialNum}%'</if>
@@ -74,6 +82,17 @@
         <if test="status != 0"> and status = #{status}</if>
         order by UPDATE_TIME desc
     </select>
+
+    <select id="conditionSearch" parameterType="ConBasicInfor" resultMap="conBasicInfor">
+        select * from CON_BASIC_INFOR cbi,con_build_unit_mess cbum where cbi.del_sign = 0 and cbi.CON_BUILD_UNIT_MESS_ID = cbum.id
+        <if test="conSerialNum != null"> and cbi.CON_SERIAL_NUM=#{conSerialNum}</if>
+        <if test="conName != null"> and cbi.CON_NAME=#{conName}</if>
+        order by cbi.UPDATE_TIME desc
+    </select>
+
+    <update id="termina" parameterType="ConBasicInfor" >
+        update con_basic_infor set termina=#{termina} where id=#{id}
+    </update>
 
 
     <select id="queryAll" resultMap="conBasicInfor">
@@ -102,5 +121,6 @@
     <update id="delUpdate" parameterType="string">
         update CON_BASIC_INFOR set del_sign=1 where id=#{value}
     </update>
+
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.gradu.pro.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ConBasicInfor extends CommonFeild {
 
@@ -15,7 +16,24 @@ public class ConBasicInfor extends CommonFeild {
     public String selBudget ;           // 选择概算
     public String conAccess ;           // 合同附件
     public int status ;                 // 合同执行状态
+    public int termina ;                // 合同是否终止 1、不终止，2、终止
     public String conDateString ;       // 签订时间转换
+    public ConBuildUnitMess conBuildUnitMess ;      // 合同承建单位
+    public List<ConBasicInforMonth> conBasicInforMonth ; // 月消费
+
+    public List<ConBasicInforMonth> getConBasicInforMonth() {
+        return conBasicInforMonth;
+    }
+    public void setConBasicInforMonth(List<ConBasicInforMonth> conBasicInforMonth) {
+        this.conBasicInforMonth = conBasicInforMonth;
+    }
+    public int getTermina() {
+        return termina;
+    }
+
+    public void setTermina(int termina) {
+        this.termina = termina;
+    }
 
     public String getConBuildUnitMessId() {
         return conBuildUnitMessId;
@@ -33,7 +51,6 @@ public class ConBasicInfor extends CommonFeild {
         this.conDateString = conDateString;
     }
 
-    public ConBuildUnitMess conBuildUnitMess ;      // 合同承建单位
 
     public ConBuildUnitMess getConBuildUnitMess() {
         return conBuildUnitMess;

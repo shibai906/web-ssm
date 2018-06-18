@@ -25,7 +25,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="conBuildUnit" class="form-control" id="name" placeholder="请输入承建单位"/>
+                                        <input type="text" required name="conBuildUnit" class="form-control" id="name" placeholder="请输入承建单位"/>
                                     </div>
                             </td>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="superSatr" class="form-control" id="name" placeholder="请输入上级主管"/>
+                                        <input required type="text" name="superSatr" class="form-control" id="name" placeholder="请输入上级主管"/>
                                     </div>
                             </td>
                         </div>
@@ -55,7 +55,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="enterAptitude" class="form-control" id="name" placeholder="请输入企业资质"/>
+                                        <input required type="text" name="enterAptitude" class="form-control" id="name" placeholder="请输入企业资质"/>
                                     </div>
                             </td>
                         </div>
@@ -67,7 +67,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="busiLicenseNum" class="form-control" id="name" placeholder="请输入营业执照编号"/>
+                                        <input required type="text" name="busiLicenseNum" class="form-control" id="name" placeholder="请输入营业执照编号"/>
                                     </div>
                             </td>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="enterCode" class="form-control" id="name" placeholder="请输入企业代码"/>
+                                        <input required type="text" name="enterCode" class="form-control" id="name" placeholder="请输入企业代码"/>
                                     </div>
                             </td>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="enterLegal" class="form-control" id="name" placeholder="请输入企业法人"/>
+                                        <input required type="text" name="enterLegal" class="form-control" id="name" placeholder="请输入企业法人"/>
                                     </div>
                             </td>
                         </div>
@@ -95,7 +95,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="enterHonor" class="form-control" id="name" placeholder="请输入企业联系人"/>
+                                        <input required type="text" name="enterHonor" class="form-control" id="name" placeholder="请输入企业联系人"/>
                                     </div>
                             </td>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="linkmanIphone" class="form-control" id="name" placeholder="请输入联系人电话"/>
+                                        <input pattern="1[0-9]{10}" required type="text" name="linkmanIphone" class="form-control" id="name" placeholder="请输入联系人11位电话号码"/>
                                     </div>
                             </td>
                         </div>
@@ -115,7 +115,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" name="honerEmail" class="form-control" id="name" placeholder="请输入联系人Email"/>
+                                        <input required pattern="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$" type="text" name="honerEmail" class="form-control" id="name" placeholder="请输入联系人Email"/>
                                     </div>
                             </td>
                         </div>
@@ -127,7 +127,7 @@
                         <div class="col-md-10">
                             <td colspan="3">
                                     <div class="form-group">
-                                        <input type="text" name="enterAddress" class="form-control" id="name" placeholder="请输入企业地址"/>
+                                        <input required type="text" name="enterAddress" class="form-control" id="name" placeholder="请输入企业地址"/>
                                     </div>
                             </td>
                         </div>
@@ -171,7 +171,7 @@
               <td>${list.superSatr}</td>
               <td>${list.enterAptitude}</td>
               <td>${list.enterHonor}</td>
-              <td>${list.enterType}</td>
+               <td><c:if test="${list.enterType == '01'}">合资</c:if><c:if test="${list.enterType == '02'}">独资</c:if><c:if test="${list.enterType == '03'}">私营</c:if><c:if test="${list.enterType == '04'}">全民所有制</c:if><c:if test="${list.enterType == '05'}">集体所有制</c:if><c:if test="${list.enterType == '06'}">股份制</c:if><c:if test="${list.enterType == '07'}">有限责任</c:if></td>
               <td><a class="button border-main" href="${pageContext.request.contextPath}/cbum/delUpdate?id=${list.id}">删除</a><a class="button border-main" href="${pageContext.request.contextPath}/cbum/query?id=${list.id}">查看</a></td>
             </tr>
            </c:forEach>

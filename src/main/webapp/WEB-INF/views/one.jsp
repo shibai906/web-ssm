@@ -132,19 +132,20 @@
                       <td>${cb.conAmout}</td>
                       <td>${cb.conDateString}</td>
                       <td>${cb.conBuildUnitMess.conBuildUnit}</td>
-                      <td>${cb.status}</td>
+                      <td><c:if test="${cb.status == '1'}">正在执行</c:if>
+                      <c:if test="${cb.status == '2'}">未执行</c:if></td>
                       <td><a class="button border-main" href="${pageContext.request.contextPath}/cbi/delUpdate?id=${cb.id}">删除</a><a class="button border-main" href="${pageContext.request.contextPath}/cbi/query?id=${cb.id}">查看</a></td>
                   </tr>
               </c:forEach>
                   <tr>
                       <td colspan="8">
                           <div class="pagelist">
-                              <c:if test="${num != 1}"><a href="one?num=${num - 1}">上一页</a></c:if>
+                              <c:if test="${num != 1}"><a href="one_copy?num=${num - 1}">上一页</a></c:if>
                               <c:forEach var="c" begin="1" end="${count}">
-                                  <a href="one?num=${c}"><c:if test="${c==num}"><span class="current"></c:if>${c}</span></a>
+                                  <a href="one_copy?num=${c}"><c:if test="${c==num}"><span class="current"></c:if>${c}</span></a>
                               </c:forEach>
-                              <c:if test="${num != count}"><a href="one?num=${num + 1}">下一页</a></c:if>
-                              <a href="one?num=${count}">尾页</a>
+                              <c:if test="${num != count}"><a href="one_copy?num=${num + 1}">下一页</a></c:if>
+                              <a href="one_copy?num=${count}">尾页</a>
                           </div>
                       </td>
                   </tr>

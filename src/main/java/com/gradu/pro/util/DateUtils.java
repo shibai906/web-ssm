@@ -44,4 +44,11 @@ public class DateUtils {
         return simpleDateFormat.format(date1) ;
     }
 
+    public static String getLastYear() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy") ;
+        String year = simpleDateFormat.format(new Date()) ;
+        int lastYear = Integer.valueOf(year) - 1 ;
+        return lastYear + "" ;
+    }
+
 }

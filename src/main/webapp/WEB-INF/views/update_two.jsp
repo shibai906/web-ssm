@@ -20,12 +20,13 @@
             <table class="table table-striped table-bordered table-hover">
                 <tbody>
                 <tr>
+                    <input type="hidden" value="${cbum.id}" name="id">
                     <div class="row">
                         <div class="col-md-2"><td>承建单位</td></div>
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.conBuildUnit}" name="conBuildUnit" class="form-control" id="name" placeholder="请输入承建单位"/>
+                                        <input type="text" value="${cbum.conBuildUnit}" name="conBuildUnit" class="form-control" id="name" required placeholder="请输入承建单位"/>
                                     </div>
                             </td>
                         </div>
@@ -34,7 +35,7 @@
                             <td>
                                 <select id="contract" value="${cbum.enterType}" name="enterType" class="selectpicker show-tick form-control" data-live-search="false">
                                     <c:forEach items="${con_nature}" var="cn">
-                                        <option value="${cn.field}">${cn.typeName}</option>
+                                    <option value="${cn.field}" <c:if test="${cn.field.equals(cbum.enterType)}">selected</c:if> >${cn.typeName}</option>
                                     </c:forEach>
                                 </select>
                             </td>
@@ -47,7 +48,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input value="${cbum.superSatr}"  type="text" name="superSatr" class="form-control" id="name" placeholder="请输入上级主管"/>
+                                        <input required value="${cbum.superSatr}"  type="text" name="superSatr" class="form-control" id="name" placeholder="请输入上级主管"/>
                                     </div>
                             </td>
                         </div>
@@ -55,7 +56,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input value="${cbum.enterAptitude}"  type="text" name="enterAptitude" class="form-control" id="name" placeholder="请输入企业资质"/>
+                                        <input required value="${cbum.enterAptitude}"  type="text" name="enterAptitude" class="form-control" id="name" placeholder="请输入企业资质"/>
                                     </div>
                             </td>
                         </div>
@@ -67,7 +68,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.busiLicenseNum}"  name="busiLicenseNum" class="form-control" id="name" placeholder="请输入营业执照编号"/>
+                                        <input required type="text" value="${cbum.busiLicenseNum}"  name="busiLicenseNum" class="form-control" id="name" placeholder="请输入营业执照编号"/>
                                     </div>
                             </td>
                         </div>
@@ -75,7 +76,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.enterCode}"  name="enterCode" class="form-control" id="name" placeholder="请输入企业代码"/>
+                                        <input required type="text" value="${cbum.enterCode}"  name="enterCode" class="form-control" id="name" placeholder="请输入企业代码"/>
                                     </div>
                             </td>
                         </div>
@@ -87,7 +88,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.enterLegal}"  name="enterLegal" class="form-control" id="name" placeholder="请输入企业法人"/>
+                                        <input required type="text" value="${cbum.enterLegal}"  name="enterLegal" class="form-control" id="name" placeholder="请输入企业法人"/>
                                     </div>
                             </td>
                         </div>
@@ -95,7 +96,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.enterHonor}"  name="enterHonor" class="form-control" id="name" placeholder="请输入企业联系人"/>
+                                        <input required type="text" value="${cbum.enterHonor}"  name="enterHonor" class="form-control" id="name" placeholder="请输入企业联系人"/>
                                     </div>
                             </td>
                         </div>
@@ -107,7 +108,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.linkmanIphone}"  name="linkmanIphone" class="form-control" id="name" placeholder="请输入联系人电话"/>
+                                        <input required type="text" pattern="1[0-9]{10}" value="${cbum.linkmanIphone}"  name="linkmanIphone" class="form-control" id="name" placeholder="请输入联系人11位电话号码"/>
                                     </div>
                             </td>
                         </div>
@@ -115,7 +116,7 @@
                         <div class="col-md-4">
                             <td>
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.honerEmail}"  name="honerEmail" class="form-control" id="name" placeholder="请输入联系人Email"/>
+                                        <input required type="text" pattern="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$" value="${cbum.honerEmail}"  name="honerEmail" class="form-control" id="name" placeholder="请输入联系人Email"/>
                                     </div>
                             </td>
                         </div>
@@ -127,7 +128,7 @@
                         <div class="col-md-10">
                             <td colspan="3">
                                     <div class="form-group">
-                                        <input type="text" value="${cbum.enterAddress}"  name="enterAddress" class="form-control" id="name" placeholder="请输入企业地址"/>
+                                        <input required type="text" value="${cbum.enterAddress}"  name="enterAddress" class="form-control" id="name" placeholder="请输入企业地址"/>
                                     </div>
                             </td>
                         </div>
@@ -152,5 +153,6 @@
                 </tbody>
             </table>
         </form>
+    <input type="text" name="" onclick="test()" value="${cbum.enterAddress}" id="test">
 </body>
 </html>

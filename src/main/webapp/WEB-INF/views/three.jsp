@@ -15,6 +15,7 @@
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 </head>
 <body>
+      <form method="post" action="${pageContext.request.contextPath}/skip/three">
         <table class="table table-striped table-bordered table-hover">
           <tbody>
               <tr>
@@ -22,48 +23,20 @@
                     <div class="col-md-2"><td>合同编号</td></div>
                     <div class="col-md-4">
                       <td>
-                        <form role="form">
                           <div class="form-group">
-                              <input type="text" class="form-control" id="name" placeholder="请输入合同编号"/>
+                              <input type="text" name="conSerialNum" value="${conSerialNum}" class="form-control" id="name" placeholder="请输入合同编号"/>
                           </div>
-                        </form>
                       </td>
                     </div>
                     <div class="col-md-2"><td>合同名称</td></div>
                     <div class="col-md-4">
                       <td>
-                        <form role="form">
                           <div class="form-group">
-                              <input type="text" class="form-control" id="name" placeholder="请输入合同名称"/>
+                              <input type="text" name="conName" value="${conName}" class="form-control" id="name" placeholder="请输入合同名称"/>
                           </div>
-                        </form>
                       </td>
                     </div>
                 </div>
-              </tr>
-              <tr>
-                  <div class="row">
-                      <div class="col-md-2"><td>合同类型</td></div>
-                      <div class="col-md-4">
-                        <td>
-                           <select id="contract" name="contract" class="selectpicker show-tick form-control" data-live-search="false">
-                                        <option value="0">--请选择合同类型--</option>
-                                        <option value="1">施工合同1</option>
-                                        <option value="2">施工合同2</option>
-                            </select> 
-                        </td>
-                      </div>
-                      <div class="col-md-2"><td>承建单位</td></div>
-                      <div class="col-md-4">
-                        <td>
-                          <form role="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="name" placeholder="请输入承建单位"/>
-                            </div>
-                          </form>
-                        </td>
-                      </div>
-                  </div>
               </tr>
               <tr>
                   <div class="row">
@@ -79,69 +52,82 @@
               </tr>
           </tbody>
         </table>
+      </form>
     <div id="main" style="height:400px;width: 800px;float: left;"></div>
     <table class="table table-bordered" style="margin-left: 40px;float:left;width: 20%;">
       <caption>2018合同执行跟踪表(单位:万元)</caption>
       <thead>
         <tr>
-          <th style="width: 10%;">1月</th>
-          <th style="width: 10%;"></th>
+          <td style="width: 10%;">1月</td>
+            <td style="width: 10%;"><span id="mon1">${mon1}</span></td>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td style="width: 10%;">2月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon2">${mon2}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">3月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon3">${mon3}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">4月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon4">${mon4}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">5月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon5">${mon5}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">6月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon6">${mon6}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">7月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon7">${mon7}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">8月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon8">${mon8}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">9月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon9">${mon9}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">10月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon10">${mon10}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">11月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon11">${mon11}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">12月</td>
-          <td style="width: 10%;"></td>
+          <td style="width: 10%;"><span id="mon12">${mon12}</span></td>
         </tr>
         <tr>
           <td style="width: 10%;">2018年小计</td>
-          <td style="width: 10%;">0.0000</td>
+          <td style="width: 10%;">${total}</td>
         </tr>
       </tbody>
     </table>
     <script>
       // 获取到这个DOM节点，然后初始化
-    var myChart = echarts.init(document.getElementById("main"));
+      var myChart = echarts.init(document.getElementById("main"));
+      var mon1 = document.getElementById("mon1").innerText;
+      var mon2 = document.getElementById("mon2").innerText;
+      var mon3 = document.getElementById("mon3").innerText;
+      var mon4 = document.getElementById("mon4").innerText;
+      var mon5 = document.getElementById("mon5").innerText;
+      var mon6 = document.getElementById("mon6").innerText;
+      var mon7 = document.getElementById("mon7").innerText;
+      var mon8 = document.getElementById("mon8").innerText;
+      var mon9 = document.getElementById("mon9").innerText;
+      var mon10 = document.getElementById("mon10").innerText;
+      var mon11 = document.getElementById("mon11").innerText;
+      var mon12 = document.getElementById("mon12").innerText;
     option = {
     title : {
         text: '2018合同执行跟踪图'
@@ -178,7 +164,7 @@
         {
             name:'付款金额（万元）',
             type:'bar',
-            data:[0.02,0.04,0.01,0.05,0.02,0.03,0.02,0.04,0.03,0.04,0.03,0.02],
+            data:[mon1,mon2,mon3,mon4,mon5,mon6,mon7,mon8,mon9,mon10,mon11,mon12],
             markPoint : {
                 data : [
                     {type : 'max', name: '最大值'},

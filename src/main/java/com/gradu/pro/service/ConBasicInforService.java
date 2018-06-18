@@ -8,4 +8,7 @@ import java.util.List;
 public interface ConBasicInforService extends CommonFeildService<ConBasicInfor> {
     List<ConBasicInfor> search(ConBasicInforForm conBasicInforForm) ;
     Integer searchCount(ConBasicInforForm conBasicInforForm) ;
+    List<ConBasicInfor> conditionSearch(ConBasicInfor conBasicInfor) ;
+    void termina(ConBasicInfor conBasicInfor) ;
+    List<ConBasicInfor> searchMap(ConBasicInfor conBasicInfor) ;
 }

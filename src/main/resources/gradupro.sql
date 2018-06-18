@@ -28,11 +28,12 @@ CREATE TABLE CON_BASIC_INFOR(
 	PROJECT_LINKMAN varchar(63) ,		-- 项目联系人
 	REMARK text ,				-- 备注
 	CON_NAME varchar(64) ,			-- 合同名称
-	CON_BUILD_UNIT char(36) ,		-- 承建单位
+	CON_BUILD_UNIT_MESS_ID char(36) ,		-- 承建单位
 	CON_AMOUT Decimal(10,2)	,		-- 合同金额
 	SEL_BUDGET varchar(63) ,		-- 选择概算
 	CON_ACCESS varchar(255) ,		-- 合同附件
 	STATUS int ,                -- 合同执行状态
+	TERMINA int ,               -- 合同是否终止 1，不终止，2，终止
 	DEL_SIGN int ,				-- 删除标志
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
@@ -63,7 +64,7 @@ CREATE TABLE DATA_DICTIONARY(
 	CREATE_TIME bigint ,			-- 创建日期
 	UPDATE_TIME bigint 			-- 更新日期
 );
-
+-- 合同月消费信息
 CREATE TABLE CON_BASIC_INFOR_MONTH(
   id char(36) PRIMARY KEY ,   -- 唯一uuid
   con_basic_infor char(36) ,  -- 合同id

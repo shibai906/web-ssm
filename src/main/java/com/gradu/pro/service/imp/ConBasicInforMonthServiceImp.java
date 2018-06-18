@@ -24,7 +24,7 @@ public class ConBasicInforMonthServiceImp implements ConBasicInforMonthService {
 
     @Override
     public void insert(ConBasicInforMonth conBasicInforMonth) {
-
+        conBasicInforMonthDao.insert(conBasicInforMonth);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ConBasicInforMonthServiceImp implements ConBasicInforMonthService {
 
     @Override
     public void update(ConBasicInforMonth conBasicInforMonth) {
-
+        conBasicInforMonthDao.update(conBasicInforMonth);
     }
 
     @Override

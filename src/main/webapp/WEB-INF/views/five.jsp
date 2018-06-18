@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-cn">
 <head>
@@ -19,28 +20,28 @@
           <tbody>
               <tr>
                 <div class="row">
-                    <div class="col-md-2"><td style="width: 10%;"></td></div>
+                  <form method="post" action="${pageContext.request.contextPath}/cbi/condition">
                     <div class="col-md-2"><td style="width: 20%;">请选择查询条件</td></div>
                     <div class="col-md-2">
                       <td style="width: 20%;">
                         <select id="find" name="find" class="selectpicker show-tick form-control" data-live-search="false">
-                            <option value="">合同编号</option>
-                            <option value="">合同名称</option>
+                            <option value="conSerialNum" <c:if test="${find.equals('conSerialNum')}">selected</c:if> >合同编号</option>
+                            <option value="conName" <c:if test="${find.equals('conName')}">selected</c:if>>合同名称</option>
                         </select>
                       </td>
                     </div>
                     <div class="col-md-2"><td style="width: 20%;">请输入查询关键字</td></div>
                     <div class="col-md-2">
                       <td  style="width: 20%;">
-                        <form role="form">
                           <div class="form-group">
-                              <input type="text" class="form-control" id="name" placeholder="请输入查询关键字"/>
+                              <input type="text" name="content" value="${content}" class="form-control" id="name" placeholder="请输入查询关键字"/>
                           </div>
-                        </form>
                       </td>
                     </div>
                     <div class="col-md-2"><td style="width: 10%;"><button>查询</button></td></div>
+                  </form>
                 </div>
+              </tr>
           </tbody>
         </table>
     <!-- <div class="panel-title">信息列表</div> -->
@@ -51,7 +52,6 @@
           <tr>
             <th width="10%">合同编号</th>
             <th>合同名称</th>
-            <th>合同类型</th>
             <th>合同金额（万元）</th>
             <th>签订日期</th>
             <th>承建单位</th>
@@ -59,31 +59,39 @@
             <th>项目联系人</th>
             <th width="300">操作</th>
           </tr>
-            <tr>
-              <td>1</td>
-              <td>井</td>
-              <td>施工合同</td>
-              <td>5300</td>
-              <td>2016-07-01</td>
-              <td>中煤</td>
-              <td>执行中</td>、
-              <td>测试</td>
-              <td><a class="button border-main" href="add.html">追加</a><a class="button border-main" href="add.html">终止</a><a class="button border-main" href="add.html">解除终止</a></td>
-            </tr>
-            <tr>
-              <td colspan="8">
-                <div class="pagelist">
-                  <a href="">上一页</a> 
-                  <span class="current">1</span>
-                  <a href="">2</a>
-                  <a href="">3</a>
-                  <a href="">下一页</a>
-                  <a href="">尾页</a> 
-                </div>
-              </td>
-            </tr>
+            <c:forEach items="${cbi}" var="cb" >
+                <tr>
+                  <td>${cb.conSerialNum}</td>
+                  <td>${cb.conName}</td>
+                  <td>${cb.conAmout}</td>
+                  <td>${cb.conDateString}</td>
+                  <td>${cb.conBuildUnitMess.conBuildUnit}</td>
+                  <td>${cb.status}</td>
+                  <td>${cb.projectLinkman}</td>
+                  <td><span class="button border-main" onclick="add('${cb.id}')">追加</span><c:if test="${cb.termina==1}"><a class="button border-main" href="${pageContext.request.contextPath}/cbi/termina?termina=2&id=${cb.id}">终止</a></c:if><c:if test="${cb.termina==2}"><a class="button border-main"  href="${pageContext.request.contextPath}/cbi/termina?termina=1&id=${cb.id}">解除终止</a></c:if></td>
+                </tr>
+            </c:forEach>
         </table>
       </div>
     </form>
+    <form action="${pageContext.request.contextPath}/cbi/addTo" method="post" id="addMoney" style="position: absolute;left: 25%;top: 30%;width: 400px;height: 112px;border: 1px solid #333;display: none;">
+            <table class="table text-center" style="background: yellow">
+                <tr>
+                    <input type="hidden" name="id" value="" class="hidden" />
+                    <td style="float: left;">追加金额(万元)：</td>
+                    <td style="float: left;"><input type="text" name="conAmout" pattern="[0-9]*(\.[0-9]+)?" class="form-control" id="name" placeholder="请输入追加金额"/></td>
+                </tr>
+                <tr><td style="width: 100%;"><button class="button" style="background: blue;float: right;">确定</button></td></tr>
+            </table>
+     </form>
+        <script>
+            function add(str){
+                var str;
+                $("#addMoney").toggle();
+                $(".hidden").val(str);
+            };
+        </script>
+
+
 </body>
 </html>

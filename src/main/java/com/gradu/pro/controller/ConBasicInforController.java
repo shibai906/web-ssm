@@ -8,6 +8,7 @@ import com.gradu.pro.service.ConBuildUnitMessService;
 import com.gradu.pro.service.DateDictionaryService;
 import com.gradu.pro.util.DateUtils;
 import com.gradu.pro.util.FileUtil;
+import com.gradu.pro.util.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -38,6 +40,9 @@ public class ConBasicInforController {
 
     @Resource
     private ConBuildUnitMessService conBuildUnitMessService ;
+
+    private String find ;
+    private String content ;
 
     /*
     这里是第一种添加方式
@@ -110,7 +115,6 @@ public class ConBasicInforController {
                         sb.append("@#") ;
                     }
                 }
-
             }
             conBasicInfor.setConAccess(sb.toString());
             conBasicInfor.setConSerialNum(request.getParameter("conSerialNum")) ;
@@ -128,7 +132,34 @@ public class ConBasicInforController {
             System.out.println("conBasicInfor="+conBasicInfor);
         }
 
-        return "index" ;
+        return "redirect:/skip/four?num=1";
+    }
+
+    @RequestMapping(value="/condition", method={RequestMethod.POST,RequestMethod.GET})
+    public Object conditionQuery(String find , String content , Model model) {
+        if(find == null)
+            find = this.find ;
+        if(content == null)
+            content = this.content ;
+        this.find = find ;
+        this.content = content ;
+        ConBasicInfor conBasicInfor = new ConBasicInfor() ;
+        if(find.equals("conSerialNum")) {
+            conBasicInfor.setConSerialNum(content);
+
+        }
+        if(find.equals("conName")) {
+            conBasicInfor.setConName(content);
+        }
+        List<ConBasicInfor> lists = conBasicInforService.conditionSearch(conBasicInfor) ;
+        for(ConBasicInfor conBasicInfor1 : lists) {
+            conBasicInfor1.setConDateString(DateUtils.converDate(conBasicInfor1.getConDate()));
+        }
+        model.addAttribute("cbi",lists) ;
+        model.addAttribute("find",find) ;
+        model.addAttribute("content",content) ;
+        return "five" ;
+
     }
 
     @RequestMapping(value="/query", method={RequestMethod.POST,RequestMethod.GET})
@@ -164,6 +195,18 @@ public class ConBasicInforController {
         return "redirect:/skip/four?num=1";
     }
 
+    @RequestMapping(value="/termina", method={RequestMethod.POST,RequestMethod.GET})
+    public Object termina(ConBasicInfor conBasicInfor) {
+        conBasicInforService.termina(conBasicInfor);
+        return "redirect:condition?find=" + find + "&content=" + content ;
+    }
 
+    @RequestMapping(value="/addTo", method={RequestMethod.POST,RequestMethod.GET})
+    public Object addTo(ConBasicInfor conBasicInfor) {
+        ConBasicInfor conBasicInfor1 = conBasicInforService.query(conBasicInfor.id) ;
+        conBasicInfor1.setConAmout(conBasicInfor1.getConAmout().add(conBasicInfor.getConAmout()));
+        conBasicInforService.update(conBasicInfor1);
+        return "redirect:condition" ;
+    }
 
 }

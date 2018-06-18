@@ -10,5 +10,7 @@ public interface ConBasicInforDao extends CommonDao<ConBasicInfor> {
 
     List<ConBasicInfor> search(ConBasicInforForm conBasicInforForm) ;
     Integer searchCount(ConBasicInforForm conBasicInforForm) ;
-
+    List<ConBasicInfor> conditionSearch(ConBasicInfor conBasicInfor) ;
+    void termina(ConBasicInfor conBasicInfor) ;
+    List<ConBasicInfor> searchMap(ConBasicInfor conBasicInfor) ;
 }
