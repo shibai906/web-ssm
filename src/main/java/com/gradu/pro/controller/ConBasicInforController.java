@@ -198,7 +198,7 @@ public class ConBasicInforController {
     @RequestMapping(value="/termina", method={RequestMethod.POST,RequestMethod.GET})
     public Object termina(ConBasicInfor conBasicInfor) {
         conBasicInforService.termina(conBasicInfor);
-        return "redirect:condition?find=" + find + "&content=" + content ;
+        return "redirect:condition" ;
     }
 
     @RequestMapping(value="/addTo", method={RequestMethod.POST,RequestMethod.GET})

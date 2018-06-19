@@ -70,7 +70,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group has-success has-feedback">
-                            <input type="date" name="timeMax" class="form-control" id="inputSuccess1" value="${cbi.timeMax}" placeholder="请选择日期" >
+                            <input type="date" name="timeMin" class="form-control" id="inputSuccess1" value="${cbi.timeMin}" placeholder="请选择日期" >
                             <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                           </div>
                       </td>
@@ -79,7 +79,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group has-success has-feedback">
-                            <input type="date" value="${cbi.timeMin}" name="timeMin" class="form-control" id="inputSuccess1" placeholder="请选择日期" >
+                            <input type="date" value="${cbi.timeMax}" name="timeMax" class="form-control" id="inputSuccess1" placeholder="请选择日期" >
                             <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                           </div>
                       </td>
@@ -132,8 +132,8 @@
                       <td>${cb.conAmout}</td>
                       <td>${cb.conDateString}</td>
                       <td>${cb.conBuildUnitMess.conBuildUnit}</td>
-                      <td><c:if test="${cb.status == '1'}">正在执行</c:if>
-                      <c:if test="${cb.status == '2'}">未执行</c:if></td>
+                      <td><c:if test="${cb.termina == '1'}">正在执行</c:if>
+                          <c:if test="${cb.termina == '2'}">终止</c:if></td>
                       <td><a class="button border-main" href="${pageContext.request.contextPath}/cbi/delUpdate?id=${cb.id}">删除</a><a class="button border-main" href="${pageContext.request.contextPath}/cbi/query?id=${cb.id}">查看</a></td>
                   </tr>
               </c:forEach>

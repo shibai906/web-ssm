@@ -38,8 +38,8 @@
                     <td>${c.conAmout}</td>
                     <td>${c.conDateString}</td>
                     <td>${c.conBuildUnitMess.conBuildUnit}</td>
-                    <td><c:if test="${c.status == '1'}">正在执行</c:if>
-                        <c:if test="${c.status == '2'}">未执行</c:if></td>
+                    <td><c:if test="${c.termina == '1'}">正在执行</c:if>
+                        <c:if test="${c.termina == '2'}">终止</c:if></td>
                     <td>${c.projectLinkman}</td>
                 <td><a class="button border-main" href="${pageContext.request.contextPath}/cbi/delUpdate?id=${c.id}">删除</a><a class="button border-main" href="${pageContext.request.contextPath}/cbi/query?id=${c.id}">查看</a><c:if test="${c.conBasicInforMonth == null}"><a class="button border-main" href="${pageContext.request.contextPath}/skip/month_add?id=${c.id}">添加月消费</a></c:if><c:if test="${c.conBasicInforMonth != null}"><a class="button border-main" href="${pageContext.request.contextPath}/skip/month_update?id=${c.id}">修改月消费</a></c:if></td>
                 </tr>

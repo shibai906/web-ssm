@@ -66,7 +66,8 @@
                   <td>${cb.conAmout}</td>
                   <td>${cb.conDateString}</td>
                   <td>${cb.conBuildUnitMess.conBuildUnit}</td>
-                  <td>${cb.status}</td>
+                  <td><c:if test="${cb.termina == '1'}">正在执行</c:if>
+                      <c:if test="${cb.termina == '2'}">终止</c:if></td>
                   <td>${cb.projectLinkman}</td>
                   <td><span class="button border-main" onclick="add('${cb.id}')">追加</span><c:if test="${cb.termina==1}"><a class="button border-main" href="${pageContext.request.contextPath}/cbi/termina?termina=2&id=${cb.id}">终止</a></c:if><c:if test="${cb.termina==2}"><a class="button border-main"  href="${pageContext.request.contextPath}/cbi/termina?termina=1&id=${cb.id}">解除终止</a></c:if></td>
                 </tr>

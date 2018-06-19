@@ -101,7 +101,7 @@
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="selBudget" type="text" required class="form-control" id="name" placeholder="请输入概算"/>
+                              <input name="selBudget" pattern="[0-9]*(\.[0-9]+)?" type="text" required class="form-control" id="name" placeholder="请输入概算"/>
                           </div>
                       </td>
                     </div>

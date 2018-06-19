@@ -23,7 +23,7 @@
     <form method="post" action="${pageContext.request.contextPath}/cbim/update">
         <input type="hidden" value="${year}" name="year">
         <input type="hidden" value="${cbi.id}" name="id">
-        <h1 align="center">${year}${cbi.conName}月花费信息添加</h1>
+        <h1 align="center">${year}-${cbi.conName}-月花费信息添加</h1>
         <table class="table table-striped table-bordered table-hover">
           <tbody>
               <tr>

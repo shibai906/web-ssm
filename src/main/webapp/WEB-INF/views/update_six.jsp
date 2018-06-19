@@ -98,11 +98,11 @@
                           </div>
                       </td>
                     </div>
-                    <div class="col-md-2"><td>选择概算</td></div>
+                    <div class="col-md-2"><td>概算</td></div>
                     <div class="col-md-4">
                       <td>
                           <div class="form-group">
-                              <input name="selBudget" required value="${cbi.selBudget}" type="text" class="form-control" id="name" placeholder="请输入概算"/>
+                              <input name="selBudget" required pattern="[0-9]*(\.[0-9]+)?" value="${cbi.selBudget}" type="text" class="form-control" id="name" placeholder="请输入概算"/>
                           </div>
                       </td>
                     </div>
